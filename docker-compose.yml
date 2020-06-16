@@ -15,6 +15,11 @@ services:
       MICRO_SERVER_ADDRESS: ":9091"
       MICRO_REGISTRY: "mdns"
 
+  laracom-user-cli:
+    build: ./user-cli
+    environment:
+      MICRO_REGISTRY: "mdns"
+
   laracom-user-service:
     depends_on:
       - laracom-user-db
@@ -42,9 +47,6 @@ services:
       MYSQL_PASSWORD: "test"
       MYSQL_DATABASE: "laracom_user"
       MYSQL_ROOT_PASSWORD: "root"
-  laracom-user-cli:
-    build: ./user-cli
-    environment:
-      MICRO_REGISTRY: "mdns"
+
 volumes:
   db_data: {}
